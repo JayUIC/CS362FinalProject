@@ -23,17 +23,14 @@ void setup()
 {
   System.out.println("Hi");
   size(700, 500);
-  MyPort = new Serial(this, "COM3", 115200);// My Arduino is on COM3. Enter the COM on which your Arduino is on.
+  MyPort = new Serial(this, "COM6", 115200);// My Arduino is on COM3. Enter the COM on which your Arduino is on.
   MyPort.bufferUntil('\n');
-
+  delay(1000);
 
   /// setting up the controller
 }
-void draw() {//Not really necessary
-  background(0, 0, 0);
-  fill(255, 0, 0);
-  text("Press any key", 100, 175);
-}
+
+
 void serialEvent(Serial MyPort)throws Exception {
   KeyString = MyPort.readStringUntil('\n');
   KeyString = KeyString.substring(0, KeyString.indexOf(':'));//The string is split. the whole string leaving the colon is taken
@@ -65,6 +62,10 @@ void serialEvent(Serial MyPort)throws Exception {
   }
 }
 
-void loop()
-{
+void draw() {//Not really necessary
+  /*
+  background(0, 0, 0);
+  fill(255, 0, 0);
+  text("Press any key", 100, 175);
+*/
 }

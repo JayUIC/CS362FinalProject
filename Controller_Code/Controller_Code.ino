@@ -37,8 +37,8 @@ void loop() {
   */
   // TODO
 
-  joystick();
-  // button();
+  // joystick();
+  button();
 }
 
 void joystick() {

@@ -5,6 +5,7 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
+
 import beads.*;
 import org.jaudiolibs.beads.*;
 
@@ -145,4 +146,27 @@ void stop() {
   minim.stop();
   // this closes the sketch
   super.stop();
+}
+
+static class BeatListener implements AudioListener
+{
+  private BeatDetect beat;
+  private AudioPlayer source;
+  
+  BeatListener(BeatDetect beat, AudioPlayer source)
+  {
+    this.source = source;
+    this.source.addListener(this);
+    this.beat = beat;
+  }
+  
+  void samples(float[] samps)
+  {
+    beat.detect(source.mix);
+  }
+  
+  void samples(float[] sampsL, float[] sampsR)
+  {
+    beat.detect(source.mix);
+  }
 }
