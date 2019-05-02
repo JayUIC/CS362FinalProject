@@ -56,7 +56,7 @@ void setup() {
   size(512, 200, P3D);
   
   minim = new Minim(this);
-  arduino = new Arduino(this, Arduino.list()[0], 57600);
+  arduino = new Arduino(this, "COM7", 57600);
   
   song = minim.loadFile("SM.mp3", 2048);
   song.play();
@@ -138,7 +138,7 @@ void draw() {
   snareSize = constrain(snareSize * 0.95, 16, 32);
   hatSize = constrain(hatSize * 0.95, 16, 32);
 }
-
+/*
 void stop() {
   // always close Minim audio classes when you are finished with them
   song.close();
@@ -147,6 +147,7 @@ void stop() {
   // this closes the sketch
   super.stop();
 }
+*/
 
 static class BeatListener implements AudioListener
 {
